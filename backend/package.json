@@ -1,39 +1,29 @@
 {
-  "name": "simple-social starter",
-  "version": "0.0.1",
-  "description": "A starter template with every formal dependencies",
+  "name": "simple-social-backend",
+  "version": "1.0.0",
+  "description": "This is a RESTFull api service for a simple Social network.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ramachandrangunasekaran/rest-api-node-js-starter.git"
-  },
-  "keywords": [
-    "node",
-    "rest-api",
-    "starter"
-  ],
+  "author": "ramachandrangunasekeran",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.17.1",
+    "express": "^4.16.3",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.16.1",
     "connect-mongo": "^2.0.0",
     "cors": "^2.8.4",
-    "express": "^4.14.1",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
+    "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.4",
-    "mongoose": "^4.6.2",
+    "mongoose": "^4.8.2",
+    "mongoose-pagination": "^1.0.0",
     "mongoose-timestamp": "^0.6.0",
     "shortid": "^2.2.8"
-  },
-  "author": "ramachandrangunasekeran",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ramachandrangunasekaran/rest-api-node-js-starter/issues"
-  },
-  "homepage": "https://github.com/ramachandrangunasekaran/rest-api-node-js-starter#readme"
+  }
 }
