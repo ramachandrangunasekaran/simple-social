@@ -2,8 +2,6 @@ import axios from 'axios';
 
 
 export function getMyIP() {
-
-    
     return dispatch => {
         var instance = axios.create();
         var url = "https://api.ipify.org/?format=json"

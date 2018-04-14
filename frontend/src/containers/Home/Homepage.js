@@ -3,43 +3,50 @@ import PropTypes from 'prop-types'
 import Title from '../../components/Title'
 import Subtitle from '../../components/SubTitle'
 import { connect } from 'react-redux';
-import {getMyIP} from '../../Actions/IPActions'
-
+import { getMyIP } from '../../Actions/IPActions'
+import NavbarComponent from '../../components/NavBar'
+import ArticleComponent from '../Article/ArticleComponent'
 class Homepage extends PureComponent {
     constructor(props) {
         super(props)
 
     }
 
-    componentWillMount () {
+    componentWillMount() {
 
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.props.getMyIP()
     }
 
-    componentWillReceiveProps (nextProps) {
+    componentWillReceiveProps(nextProps) {
 
     }
 
-    componentWillUpdate (nextProps, nextState) {
+    componentWillUpdate(nextProps, nextState) {
 
     }
 
-    componentDidUpdate (prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
 
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
 
     }
 
-    render () {
+    render() {
         return (
-            <div>
-                <Title  title = "Welcome to Demo"/>
-                <Subtitle subtitle = {this.props.ipAddress} />
+            <div className="container-fluid">
+                <NavbarComponent canShowButtons = {true}/>
+                <section style={{marginTop:100}}>
+                <ArticleComponent/>
+                <ArticleComponent/>
+                <ArticleComponent/>
+                <ArticleComponent/>
+                <ArticleComponent/>
+                </section>
             </div>
         )
     }
@@ -47,7 +54,7 @@ class Homepage extends PureComponent {
 
 Homepage.propTypes = {
     getMyIP: PropTypes.func,
-    ipAddress:PropTypes.string
+    ipAddress: PropTypes.string
 }
 
 function mapStateToProps(state) {

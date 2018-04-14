@@ -13,10 +13,12 @@ class PrivateRouter extends Component {
     render() {
         
         var compo = this.props.component;
-        if (getAuthToken())
-            return (<Route component={compo} {...this.props} />);
-        else
-            return <Redirect to='/login' {...this.props}/>;
+        // if (getAuthToken())
+        //     return (<Route component={compo} {...this.props} />);
+        // else
+        //     return <Redirect to='/login' {...this.props}/>;
+
+        return (<Route component={compo} {...this.props} />);
     }
 }
 

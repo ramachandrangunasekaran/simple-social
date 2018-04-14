@@ -4,6 +4,8 @@ import PrivateRouter from '../router/PrivateRouter';
 import PublicRouter from '../router/PublicRouter'
 import '../styles/main.scss';
 import HomePage from './Home/Homepage'
+import LoginPage from './Login/LoginPage'
+import RegisterPage from './Register/RegisterPage'
 
 class App extends Component {
 
@@ -21,13 +23,12 @@ class App extends Component {
                 <Router>
                     <Switch> 
                          {/* Only un Authorized users can use this Routes */}
-                       {/* <PublicRouter exact={true} path="/" component={HomePage} /> */}
+                       <PublicRouter exact={true} path="/login" component={LoginPage} />
+                       <PublicRouter exact={true} path="/register" component={RegisterPage} />
 
                        {/* Private Router */}
-                        {/* <PrivateRouter  path="/" component={Dashboard}/> */}
-
-                        <Route exact path="/" component = {HomePage} />
-                        
+                        <PrivateRouter  path="/" component={HomePage}/>
+                                                
                     </Switch>
                 </Router>
             </div>

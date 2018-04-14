@@ -1,5 +1,9 @@
-
+import './styles/bootstrap.css';
+import './styles/bootstrap-social.css'
+import './styles/bootstrap-reboot.css'
+import './styles/bootstrap-grid.css'
 import './styles/main.scss';
+import './styles/fontawesome.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './Store/ConfigureStore';
