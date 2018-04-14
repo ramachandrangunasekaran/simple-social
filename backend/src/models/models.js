@@ -4,6 +4,9 @@ var timestamps = require('mongoose-timestamp');
 var schema = mongoose.Schema;
 var utils = require('../utils/utils')
 
+
+
+//User Model
 var userModel = new schema({
     id: {
         type: String,
@@ -12,7 +15,9 @@ var userModel = new schema({
     username: {
         type: String,
         unique: true,
-        required:true
+        required:true,
+        index:true,
+        lowercase: true
     },
     password: {
         type: String,
@@ -21,7 +26,9 @@ var userModel = new schema({
     email: {
         type: String,
         unique: true,
-        required:true
+        required:true,
+        index:true,
+        lowercase: true
     },
     is_active:{
         type: Boolean,
@@ -43,9 +50,9 @@ userModel.set('toObject', {
 });
 
 
-
+//Profile Model
 var userProfileModel = new schema({
-    id:{ type: String,unique:true},
+    id:{ type: String,unique:true,index:true},
     profilepic:{type:String},
     firstname:{ type: String},
     lastname:{type:String},
@@ -66,7 +73,43 @@ userProfileModel.set('toObject', {
 
 
 
+
+
+
+//Relationship Model
+var userFollowersModel = new schema({
+    to: { type: String, required: true, index:true, ref: 'Users'  },
+    myself: { type: String, required: true, index:true, ref: 'Users' }
+});
+
+userFollowersModel.virtual('following', {
+    ref: 'Users',
+    localField: 'to',
+    foreignField: 'username',
+});
+
+userFollowersModel.virtual('followers', {
+    ref: 'Users',
+    localField: 'myself',
+    foreignField: 'username',
+});
+
+
+userFollowersModel.set('toJSON', {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) { delete ret._id,delete ret.id }
+});
+
+userFollowersModel.set('toObject', {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) { delete ret._id,delete ret.id }
+});
+
+
 module.exports = {
     usersProfileModel: mongoose.model('UserProfiles', userProfileModel),
-    usersModel: mongoose.model("Users", userModel)
+    usersModel: mongoose.model("Users", userModel),
+    usersFollowerModel: mongoose.model("Relations", userFollowersModel)
 }
