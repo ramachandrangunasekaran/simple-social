@@ -11,6 +11,7 @@ mongoose.Promise = promise.Promise;
 
 var config = require('./src/config/config');
 var userRoutes=require('./src/routers/userRoutes');
+var usersRoutes=require('./src/routers/usersRouter');
 
 var app=express();
 app.use(cors());
@@ -40,3 +41,4 @@ app.listen(1300,function(){
 console.log("server is running in 1300");
 });
 app.use('/api/v1/user',userRoutes);
+app.use('/api/v1/users',usersRoutes);

@@ -33,16 +33,24 @@ var getUsers = function (req, res) {
 };
 
 
+//Get Users List.
+var getMySelf = function (req, res) {
+    utils.sendResult("Your profile", req.body.user, res, true, 200)
+};
+
+
 
 var updateProfileByUsername =  function (req, res) {
-    models.usersProfileModel.findOneAndUpdate({ username: req.params.username }, { new: true }).populate('user').exec( function (err, profileData) {
+    models.usersProfileModel.findOneAndUpdate({ id: req.body.user.id }, { new: true }).populate('user').exec( function (err, profileData) {
         if (err) {
             utils.sendResult("Error", err.message, res, false, 200)
         } else {
+            
             utils.deleteKey(req,["username","user","id"])
             for (var p in req.body) {
                 profileData[p] = req.body[p];
             }
+
             profileData.save(function (err) {
                 if (err) {
                     utils.sendResult("Error", err.message, res, false, 200)
@@ -191,6 +199,7 @@ var addUser = function (req, res) {
 
 
 module.exports = {
+    getMySelf,
     get: getUsers,
     getByUser: getUserByUsername,
     updateProfile: updateProfileByUsername,

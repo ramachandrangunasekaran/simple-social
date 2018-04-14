@@ -37,6 +37,7 @@ function Utils() {
         jwt.verify(token, config.jwtSecret, function (err, decoded) {
             if (err) return res.status(401).send({ message: 'unauthorized' });
             req.body['user'] = decoded.user
+            req.body['id'] = decoded.user.id
             req.body['username'] = decoded.user.username
             callback(true, req)
         })
