@@ -8,7 +8,7 @@ var models = require('./../models/models');
 var returnFollowingList = function(list){
     var following = []
     list.map((f)=>{
-        following = [...following,f.following[0]]
+        following = [...following,f.following]
     })
     return following
 }
@@ -16,7 +16,7 @@ var returnFollowingList = function(list){
 var returnFollowerList = function(list){
     var followers = []
     list.map((f)=>{
-        followers = [...followers,f.followers[0]]
+        followers = [...followers,f.followers]
     })
     return followers
 }

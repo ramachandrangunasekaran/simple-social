@@ -6,7 +6,7 @@ class PrivateRouter extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log(getAuthToken())
     }
 
 

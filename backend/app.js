@@ -41,6 +41,7 @@ app.use(session({
 app.listen(1300,function(){
 console.log("server is running in 1300");
 });
+app.use('/api/v1/feed',require('./src/routers/feedRoutes'))
 app.use('/api/v1/user',userRoutes);
 app.use('/api/v1/users',usersRoutes);
 app.use('/api/v1/relation',require('./src/routers/relationshipRoutes'))
