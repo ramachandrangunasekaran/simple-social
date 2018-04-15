@@ -5,11 +5,7 @@ const _ = require('lodash')
 
 export function getAuthToken() {
     var token = cookie.load(constant.abbriv.AUTH)
-    if (!_(token).isEmpty()) {
-        return crypt.decrypt(token);
-    } else {
-        return ""
-    }
+    return token
 }
 
 export function validateEmail(email){
@@ -41,7 +37,7 @@ export function setCookie(key,value){
     expires.setDate(Date.now() + 15)
     cookie.save(
         key,
-        crypt.encrypt(value),
+        value,
         {
           path: '/',
           expires,
@@ -66,13 +62,8 @@ export function removeCookie(key){
     return cookie.remove(key,{ path: '/' })
 }
 
-export function setSessionStorage(key,value,callback) {
-    sessionStorage.setItem(key, crypt.encrypt(value))
-    callback(true)
-}
-export function removeSessionStorage(key,callback){
-    sessionStorage.removeItem(key)
-    callback(true)
+export function setSessionStorage(key,value) {
+    return sessionStorage.setItem(key, crypt.encrypt(value))
 }
 
 export function getSessionStorage(key){
@@ -80,10 +71,32 @@ export function getSessionStorage(key){
     if (obj != "undefined") {
         return crypt.decrypt(obj);
     } else {
-        return ""
+        return null
     }
     
 }
+
+export function removeSessionStorage(key){
+    return sessionStorage.removeItem(key)
+}
+
+export function setLocalStorage(key,value){
+    return localStorage.setItem(key, crypt.encrypt(value))
+}
+
+export function getLocalStorage(key,value){
+    var obj = localStorage.getItem(key)
+    if (obj != "undefined") {
+        return crypt.decrypt(obj);
+    } else {
+        return null
+    }
+}
+
+export function removeLocalStorage(key){
+    return localStorage.removeItem(key)
+}
+
 
 export function returnFormatedDate(dateString) {
     var date = new Date(dateString)

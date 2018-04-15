@@ -6,12 +6,10 @@ var axios = require("axios");
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 
-
-
 //Get Users List.
 var getUsers = function (req, res) {
     userRepo.getUsers(req).then((users)=>{
-        return  utils.sendResult("User list.", users, res, true, 200)
+        return  utils.sendResult("User list.", {users}, res, true, 200)
     }).catch((e)=>{
         utils.sendResult("Error",e, res, false, 200)
     })
@@ -26,7 +24,7 @@ var getMySelf = function (req, res) {
 
 //Update profile.
 var updateProfile = function (req, res) {
-    userRepo.update(req).then((users)=>{
+    userRepo.update(req).then((profile)=>{
         return  utils.sendResult("Profile updated successfully.", profile, res, true, 200)
     }).catch((e)=>{
         utils.sendResult("Error", e, res, false, 200)

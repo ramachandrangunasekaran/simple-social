@@ -7,22 +7,20 @@ require('mongoose-pagination');
 
 var getUsers = function (req) {
 
-    var limit = lo.isEmpty(req.query.limit) ? 10 : lo.toNumber(req.query.limit)
+    var limit = lo.isEmpty(req.query.limit) ? 100 : lo.toNumber(req.query.limit)
     var page = lo.isEmpty(req.query.page) ? 1 : lo.toNumber(req.query.page)
     return new Promise(function (resolved, rejected) {
-        models.usersModel.find().populate('profile').paginate(page, limit, function (err, users, total) {
+        models.usersModel.find({ username: { $ne: req.body.username } }).populate('profile').paginate(page, limit, function (err, users, total) {
             if (err) {
                 return rejected(err.message)
-
             } else {
-                var u = {}
+
                 var usersList = {}
-                usersList.users = users
+                usersList.list = users
                 usersList.total = total
                 usersList.page = page
                 usersList.next_page = page + 1
-                u.users_list = usersList
-                return resolved({ users: u })
+                return resolved(usersList)
             }
         });
     });
@@ -72,7 +70,7 @@ var create = function (body) {
 
 var update = function (req) {
     return new Promise(function (resolved, rejected) {
-        models.usersProfileModel.findOneAndUpdate({ id: req.body.user.id }, { new: true }).populate('user').exec(function (err, profileData) {
+        models.usersProfileModel.findOneAndUpdate({ id: req.body.user.id }, { new: true }).exec(function (err, profileData) {
             if (err) {
                 return rejected(err.toJSON())
             }

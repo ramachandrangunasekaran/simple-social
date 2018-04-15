@@ -4,7 +4,7 @@ var repo = require('../repositories/relationshipRepository');
 
 //Get Users List.
 var addFollowing = function (req, res) {
-    repo.addFollower(req.body.username,req.body.leader).then((users)=>{
+    repo.addFollower(req.body.username,req.body.to).then((users)=>{
         return  utils.sendResult("Followed", {}, res, true, 200)
     }).catch((e)=>{
         utils.sendResult("Error",e, res, false, 200)

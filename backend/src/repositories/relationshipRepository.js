@@ -72,7 +72,7 @@ var getFollowings = function (username) {
         }).select("to")
         .exec(function(err,followings){
          if(err) return rejected(err);
-         return resolved(returnFollowingList(followings))
+         return resolved({list:returnFollowingList(followings)})
         });
     });
 }
@@ -89,7 +89,7 @@ var getFollowers = function(username){
         }).select('myself')
         .exec(function(err,followers){
          if(err) return rejected(err);
-         return resolved(returnFollowerList(followers))
+         return resolved({list:returnFollowerList(followers)})
         });
     });
 }
