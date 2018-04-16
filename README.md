@@ -1,4 +1,8 @@
 
+![npm](https://img.shields.io/npm/v/npm.svg)
+
+![Hex.pm](https://img.shields.io/hexpm/l/plug.svg?style=plastic)
+
 
 Simple Socialy is a demo on building social network using nodeJS.
 
