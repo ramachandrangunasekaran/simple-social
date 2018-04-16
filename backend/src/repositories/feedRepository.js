@@ -111,7 +111,16 @@ var getFeeds = function (req) {
         .exec(function(err,followings){
          if(err) return rejected(err);
          followings.push(req.body.username)
-         models.userFeedsModel.find({username: { $in: followings }},'-_id -__v -comments_list -likes_list',{lean: true}).sort([['updatedAt', -1]]).paginate(page, limit, (err, list, total) => {
+         models.userFeedsModel.find({username: { $in: followings }},'-_id -__v -comments_list -likes_list',{lean: true}).sort([['updatedAt', -1]]).populate({
+            path: 'owner',
+            model: 'Users',
+            select: "-_id -__v -password",
+            populate: [{
+                path: 'profile',
+                model: 'UserProfiles',
+                select: "-_id -__v -user",
+            }]
+        }).paginate(page, limit, (err, list, total) => {
             if (err) return rejected(err)
             if (list) {
                 var feeds = {}
@@ -133,7 +142,16 @@ var getFeedByUser = function (req) {
     var limit = lo.isEmpty(req.query.limit) ? 100 : lo.toNumber(req.query.limit)
     var page = lo.isEmpty(req.query.page) ? 1 : lo.toNumber(req.query.page)
     return new Promise(function (resolved, rejected) {
-        models.userFeedsModel.find({username:req.params.user},'-_id -__v -comments_list -likes_list',{lean: true}).sort([['updatedAt', -1]]).paginate(page, limit, (err, list, total) => {
+        models.userFeedsModel.find({username:req.params.user},'-_id -__v -comments_list -likes_list -username',{lean: true}).sort([['updatedAt', -1]]).populate({
+            path: 'owner',
+            model: 'Users',
+            select: "-_id -__v -password",
+            populate: [{
+                path: 'profile',
+                model: 'UserProfiles',
+                select: "-_id -__v -user",
+            }]
+        }).paginate(page, limit, (err, list, total) => {
             if (err) return rejected(err)
             if (list) {
                 var feeds = {}

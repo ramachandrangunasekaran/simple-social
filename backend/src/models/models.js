@@ -120,6 +120,7 @@ var feedModel = new schema({
         type: String,
         required: true,
         index: true,
+        ref: 'Users'
     },
     feed: {
         type: Object, default: {
@@ -148,7 +149,12 @@ feedModel.virtual('likes', {
     localField: 'likes_list',
     foreignField: 'username',
 });
-
+feedModel.virtual('owner', {
+    ref: 'Users',
+    localField: 'username',
+    foreignField: 'username',
+    justOne: true
+});
 feedModel.virtual('comments', {
     ref: 'Comments',
     localField: 'comments_list',
@@ -158,13 +164,13 @@ feedModel.virtual('comments', {
 feedModel.set('toJSON', {
     virtuals: true,
     versionKey: false,
-    transform: function (doc, ret) { delete ret._id, delete ret.likes_list,delete ret.comments_list }
+    transform: function (doc, ret) { delete ret._id, delete ret.likes_list,delete ret.comments_list, delete ret.username}
 });
 
 feedModel.set('toObject', {
     virtuals: true,
     versionKey: false,
-    transform: function (doc, ret) { delete ret._id, delete ret.likes_list,delete ret.comments_list }
+    transform: function (doc, ret) { delete ret._id, delete ret.likes_list,delete ret.comments_list,delete ret.username }
 });
 
 

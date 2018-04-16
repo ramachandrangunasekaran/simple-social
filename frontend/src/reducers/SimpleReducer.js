@@ -39,6 +39,15 @@ function parseFollowingList(old_state, action) {
     return new_state;
 }
 
+
+function parseWallFeedList(old_state, action) {
+    var feeds = action.data.data.data.feeds
+    var new_state = {}
+    new_state = Object.assign(new_state,old_state);
+    new_state.myWallFeeds = feeds.list
+    return new_state;
+}
+
 export default function (state = initialState, action) {
     switch (action.type) {
         case 'GET_IP_RESULT':
@@ -49,6 +58,8 @@ export default function (state = initialState, action) {
             return parseFollowersList(state, action);
         case 'GET_FOLLOWING_LIST':  
             return parseFollowingList(state, action);
+        case 'GET_WALLFEED_LIST':  
+            return parseWallFeedList(state, action); 
         default:
             return state
     }

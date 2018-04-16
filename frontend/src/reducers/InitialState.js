@@ -2,5 +2,6 @@ export default {
     ip_address:"",
     userList:[],
     followersList:[],
-    followingList:[]
+    followingList:[],
+    myWallFeeds:[]
 }

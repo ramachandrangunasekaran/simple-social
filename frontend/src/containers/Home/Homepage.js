@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import Title from '../../components/Title'
 import Subtitle from '../../components/SubTitle'
 import { connect } from 'react-redux';
-import { getMyIP } from '../../Actions/IPActions'
+import { getMyPersonalizedFeed } from '../../Actions/IPActions'
 import NavbarComponent from '../../components/NavBar'
 import ArticleComponent from '../Article/ArticleComponent'
 class Homepage extends PureComponent {
     constructor(props) {
         super(props)
-
+        this.state = {
+            feeds : []
+        }
     }
 
     componentWillMount() {
@@ -17,11 +19,15 @@ class Homepage extends PureComponent {
     }
 
     componentDidMount() {
-        this.props.getMyIP()
+        this.props.getMyPersonalizedFeed()
     }
 
     componentWillReceiveProps(nextProps) {
-
+        
+        if (nextProps.wallFeed.length > 0){
+            console.log(nextProps.wallFeed[0])
+            this.setState({feeds:nextProps.wallFeed})
+        }
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -37,15 +43,14 @@ class Homepage extends PureComponent {
     }
 
     render() {
+
         return (
             <div className="container-fluid">
-                <NavbarComponent canShowButtons = {true}/>
-                <section style={{marginTop:100}}>
-                <ArticleComponent/>
-                <ArticleComponent/>
-                <ArticleComponent/>
-                <ArticleComponent/>
-                <ArticleComponent/>
+                <NavbarComponent canShowButtons={true} />
+                <section style={{ marginTop: 100 }}>
+                    {this.state.feeds.map((article) => 
+                        (<ArticleComponent  key = {article.id} article= {article}/>)
+                    )}
                 </section>
             </div>
         )
@@ -53,14 +58,14 @@ class Homepage extends PureComponent {
 }
 
 Homepage.propTypes = {
-    getMyIP: PropTypes.func,
-    ipAddress: PropTypes.string
+    getMyPersonalizedFeed: PropTypes.func,
+    wallFeed: PropTypes.array
 }
 
 function mapStateToProps(state) {
     var returnObj = {}
-    returnObj.ipAddress = state.SIMPLE.ip_address
+    returnObj.wallFeed = state.SIMPLE.myWallFeeds
     return returnObj
 }
 
-export default connect(mapStateToProps, { getMyIP })(Homepage);
+export default connect(mapStateToProps, { getMyPersonalizedFeed })(Homepage);

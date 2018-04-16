@@ -86,3 +86,26 @@ export function getFollowingList(){
         });
     }
 }
+
+
+
+export function getMyPersonalizedFeed(){
+    return dispatch => {
+        var instance = axios.create();
+        instance.defaults.headers.common[Constant.Header.AUTHORIZATION] = getAuthToken();
+        var url = Constant.URI() + Constant.Routes.FEED.PERSONALIZED_FEED
+        instance.get(url).then((data) => {
+            if (data.status === 200) {
+                dispatch({
+                    type: "GET_WALLFEED_LIST",
+                    data
+                })
+            } 
+        }).catch((error) => {
+            dispatch({
+                type: "ERROR",
+                error
+            })
+        });
+    }
+}

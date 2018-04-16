@@ -25,6 +25,10 @@ module.exports = {
             ROOT:'/relation',
             FOLLOWERS:'/relation/follower',
             FOLLOWING: '/relation/following',
+        },
+        FEED:{
+            ROOT:'/feed',
+            PERSONALIZED_FEED:'/feed/my/wall'
 
         }
         
