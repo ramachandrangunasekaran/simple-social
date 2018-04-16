@@ -1,0 +1,904 @@
+{
+	"info": {
+		"name": "simple-social",
+		"_postman_id": "5259f94e-f433-7cd1-5939-9a775363186d",
+		"description": "A Demo application to illustrate Social Networking.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Relations",
+			"description": "",
+			"item": [
+				{
+					"name": "Follow a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"to\": \"{{username}}\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/relation/following",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"relation",
+								"following"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Un Follow a user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/relation/following/{{username}}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"relation",
+								"following",
+								"{{username}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Followings list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"leader\": {{username}}\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/relation/following",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"relation",
+								"following"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Followers list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"leader\": {{username}}\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/relation/follower",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"relation",
+								"follower"
+							]
+						},
+						"description": "Get list of followers."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feeds",
+			"description": "",
+			"item": [
+				{
+					"name": "Create new Feed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a First Post Heading\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Feed",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a updating a feed.\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/By2xxm-nz",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"By2xxm-nz"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Like a Feed",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/like/{{feed_id}}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"like",
+								"{{feed_id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "unlike a Feed",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/like/{{feed_id}}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"like",
+								"{{feed_id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Comment a Feed",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comment\": \"This is a test Comment...\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/comment/{{feed_id}}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"comment",
+								"{{feed_id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get my personalized Feeds",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a first Post Heading\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/my/wall?limit=100&page=1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"my",
+								"wall"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"equals": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": [
+						{
+							"id": "610e0551-9519-4684-b911-537a52f4767e",
+							"name": "Get my personalized Feeds",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "x-access-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiYW5kcmVhcy5wZWRlcnNlbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiaGVhdnljYXQzMDQiLCJwcm9maWxlIjp7InVzZXIiOiI1YWQyMjBjNDhmY2IzMzA1ZjUyNGRkNTMiLCJpZCI6InJKM1RlczEzZiIsImxhc3RuYW1lIjoiRmVsaXgiLCJmaXJzdG5hbWUiOiJIZXJyYW4iLCJwcm9maWxlcGljIjoiIn0sImlzX2FjdGl2ZSI6dHJ1ZSwiaWQiOiJySjNUZXMxM2YifSwiaWF0IjoxNTIzODE3ODI1LCJleHAiOjE1MjM5MDQyMjV9.p34STn6Q3ZqQoVvsqsa_oyeKUxhBQfHRaN_nJikDdFo",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a first Post Heading\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+								},
+								"url": {
+									"raw": "127.0.0.1:1300/api/v1/feed/my/wall?limit=100&page=1",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "1300",
+									"path": [
+										"api",
+										"v1",
+										"feed",
+										"my",
+										"wall"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"equals": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"equals": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "text",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 16 Apr 2018 05:31:26 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Mon Apr 16 2018 11:02:16 GMT+0530 (IST)",
+									"httpOnly": true,
+									"domain": "127.0.0.1",
+									"path": "/",
+									"secure": false,
+									"value": "s%3AI7i0sBOvT8kSfDUaAC7aPSA8AHARTZWz.D3AJYXJQtsSh7wZe2ehZMxc3TQqciaNlgr%2BZ7yITVnc",
+									"key": "connect.sid"
+								}
+							],
+							"responseTime": 105,
+							"body": "{\"message\":\"Your news feeds\",\"success\":true,\"data\":{\"feeds\":{\"list\":[{\"createdAt\":\"2018-04-15T20:58:11.799Z\",\"updatedAt\":\"2018-04-15T21:15:27.185Z\",\"username\":\"sivakumar\",\"comments_count\":1,\"likes_count\":1,\"feed\":{\"picture\":\"\",\"type\":\"text\",\"description\":\"This is a test description with a little more content on the post.\",\"heading\":\"This is a First Post Heading\"},\"id\":\"By21pV-2f\",\"owner\":{\"email\":\"sivakumar@gmail.com\",\"username\":\"sivakumar\",\"is_active\":true,\"id\":\"B13cUj12M\",\"profile\":{\"id\":\"B13cUj12M\",\"lastname\":\"Kumar\",\"firstname\":\"Siva\",\"profilepic\":\"https://lh3.googleusercontent.com/-OV13RTcpTsk/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWA1U3zIPNE9QpaFztCVS--CDD8K6Q/mo/photo.jpg?sz=512\"}}}],\"total\":1,\"page\":1,\"next_page\":2}}}"
+						}
+					]
+				},
+				{
+					"name": "Get Particular userFeeds",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a first Post Heading\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/user/{{username}}?limit=100&page=1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"user",
+								"{{username}}"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"equals": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Feed by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-access-token",
+								"value": "auth-token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"feed\":{\n\t\t\t\"heading\": \"This is a first Post Heading\",\n            \"description\": \"This is a test description with a little more content on the post.\",\n            \"type\": \"text\",\n            \"picture\": \"\"\n        }\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:1300/api/v1/feed/{{feed_id}}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "1300",
+							"path": [
+								"api",
+								"v1",
+								"feed",
+								"{{feed_id}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"sivakumar@gmail.com\",\n\t\"password\":\"welcome123\",\n\t\"username\":\"sivakumar\",\n\t\"firstname\":\"Siva\",\n\t\"lastname\":\"Kumar\",\n\t\"profilepic\":\"https://lh3.googleusercontent.com/-OV13RTcpTsk/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWA1U3zIPNE9QpaFztCVS--CDD8K6Q/mo/photo.jpg?sz=512\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"register"
+					]
+				},
+				"description": "Register a user into Simple social."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"sivakumar@gmail.com\",\n\t\"password\":\"welcome123\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				},
+				"description": "Login a user into Simple social."
+			},
+			"response": []
+		},
+		{
+			"name": "Particuar user social profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "auth-token"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/users/{{username}}",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"{{username}}"
+					]
+				},
+				"description": "Fetch a particular user's social profile."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "auth-token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"old_password\": \"{{old password}}\",\n\t\"new_password\": \"{{new password}}\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user/reset-password",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"reset-password"
+					]
+				},
+				"description": "Reset our password."
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "auth-token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lastname\": \"Test Last name\",\n\t\"firstname\": \"Test First name\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/users?limit=10&page=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10",
+							"equals": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true
+						}
+					]
+				},
+				"description": "Get list of users in our simple social "
+			},
+			"response": []
+		},
+		{
+			"name": "Update your profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "auth-token"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lastname\": \"Test Last name\",\n\t\"firstname\": \"Test First name\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": "Update the profile of a user."
+			},
+			"response": []
+		},
+		{
+			"name": "Get your profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "auth-token"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check Username",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"sivakumar@gmail.com\",\n\t\"password\":\"welcome123\",\n\t\"username\":\"sivakumar\",\n\t\"firstname\":\"Siva\",\n\t\"lastname\":\"Kumar\",\n\t\"profilepic\":\"https://lh3.googleusercontent.com/-OV13RTcpTsk/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWA1U3zIPNE9QpaFztCVS--CDD8K6Q/mo/photo.jpg?sz=512\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:1300/api/v1/user/check/{{username}}",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1300",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"check",
+						"{{username}}"
+					]
+				},
+				"description": "Check whether username exist, before registering the user."
+			},
+			"response": []
+		}
+	]
+}
