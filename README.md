@@ -64,7 +64,7 @@ $ npm start
 
 ### Api Documentation:
 You can find the API documentation in the below link,
-https://documenter.getpostman.com/view/2926617/simple-social/RVu8iSwY#3a21e616-da44-0965-2d05-f61316aa0c69
+https://documenter.getpostman.com/view/2926617/simple-social/RVu8iSwY
 
 ### Yet to be developed
 
